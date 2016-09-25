@@ -7,6 +7,7 @@
 #   Uncomment the ones you want to try and experiment with.
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
+HubotSlack = require 'hubot-slack'
 
 module.exports = (robot) ->
 
@@ -104,3 +105,5 @@ module.exports = (robot) ->
   # robot.respond /sleep it off/i, (res) ->
   #   robot.brain.set 'totalSodas', 0
   #   res.reply 'zzzzz'
+  robot.listeners.push new HubotSlack.SlackBotListener robot, /^ppping/i, (res) ->
+    res.send "pppong"
