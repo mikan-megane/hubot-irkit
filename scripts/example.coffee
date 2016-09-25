@@ -104,3 +104,7 @@ module.exports = (robot) ->
   # robot.respond /sleep it off/i, (res) ->
   #   robot.brain.set 'totalSodas', 0
   #   res.reply 'zzzzz'
+HubotSlack = require 'hubot-slack'
+module.exports = (robot) ->
+  robot.listeners.push new HubotSlack.SlackBotListener robot, /^ppping/i, (res) ->
+    res.send "pppong"
