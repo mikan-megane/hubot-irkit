@@ -7,11 +7,8 @@
 #   Uncomment the ones you want to try and experiment with.
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
-HubotSlack = require 'hubot-slack'
 
 module.exports = (robot) ->
-  robot.listeners.push new HubotSlack.SlackBotListener robot, /^ppping/i, (res) ->
-    res.send "pppong"
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"

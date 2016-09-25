@@ -10,6 +10,5 @@
   "hubot-rules",
   "hubot-shipit",
   "hubot-irkit",
-  "hubot-cron",
-  "hubot-slack"
+  "hubot-cron"
 ]
