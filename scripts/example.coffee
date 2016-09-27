@@ -9,13 +9,22 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
-  robot.respond /shell (.*)$/i, (msg) ->
+  robot.respond /(?:sh|shell)\s(.*)$/i, (msg) ->
     cmd = msg.match[1]
     @exec = require('child_process').exec
-    msg.send cmd
+    msg.send cmd+"実行中"
 
     @exec cmd, (error, stdout, stderr) ->
-      #msg.send error
+      msg.send "エラー"+error
+      msg.send stdout
+      #msg.send stderr
+  robot.respond /reboot|update|再起動|更新/i, (msg) ->
+    cmd = 'sh /home/mikan/hubot/reboot.sh'
+    msg.send "再起動してきます。"
+    @exec = require('child_process').exec
+
+    @exec cmd, (error, stdout, stderr) ->
+      msg.send "エラー"+error
       msg.send stdout
       #msg.send stderr
   # robot.hear /badger/i, (res) ->
