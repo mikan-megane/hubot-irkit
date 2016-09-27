@@ -15,7 +15,8 @@ module.exports = (robot) ->
     msg.send cmd+"実行中"
 
     @exec cmd, (error, stdout, stderr) ->
-      msg.send "エラー"+error
+      if error?
+        msg.send "エラー"+error
       msg.send stdout
       #msg.send stderr
   robot.respond /reboot|update|再起動|更新/i, (msg) ->
@@ -24,7 +25,8 @@ module.exports = (robot) ->
     @exec = require('child_process').exec
 
     @exec cmd, (error, stdout, stderr) ->
-      # msg.send "エラー"+error
+      if error != null
+        msg.send "エラー"+error
       msg.send stdout
       #msg.send stderr
   # robot.hear /badger/i, (res) ->
